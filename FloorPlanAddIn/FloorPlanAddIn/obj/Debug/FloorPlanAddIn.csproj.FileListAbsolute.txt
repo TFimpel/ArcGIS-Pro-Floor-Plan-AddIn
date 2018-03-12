@@ -1,0 +1,11 @@
+C:\Users\fimpe\Documents\Visual Studio 2017\Projects\FloorPlanAddIn\FloorPlanAddIn\bin\Debug\FloorPlanAddIn.dll
+C:\Users\fimpe\Documents\Visual Studio 2017\Projects\FloorPlanAddIn\FloorPlanAddIn\bin\Debug\FloorPlanAddIn.pdb
+C:\Users\fimpe\Documents\Visual Studio 2017\Projects\FloorPlanAddIn\FloorPlanAddIn\obj\Debug\FloorPlanAddIn.csprojResolveAssemblyReference.cache
+C:\Users\fimpe\Documents\Visual Studio 2017\Projects\FloorPlanAddIn\FloorPlanAddIn\obj\Debug\Dockpane1.g.cs
+C:\Users\fimpe\Documents\Visual Studio 2017\Projects\FloorPlanAddIn\FloorPlanAddIn\obj\Debug\FloorPlanAddIn_MarkupCompile.cache
+C:\Users\fimpe\Documents\Visual Studio 2017\Projects\FloorPlanAddIn\FloorPlanAddIn\obj\Debug\FloorPlanAddIn_MarkupCompile.lref
+C:\Users\fimpe\Documents\Visual Studio 2017\Projects\FloorPlanAddIn\FloorPlanAddIn\obj\Debug\Dockpane1.baml
+C:\Users\fimpe\Documents\Visual Studio 2017\Projects\FloorPlanAddIn\FloorPlanAddIn\obj\Debug\FloorPlanAddIn.g.resources
+C:\Users\fimpe\Documents\Visual Studio 2017\Projects\FloorPlanAddIn\FloorPlanAddIn\obj\Debug\FloorPlanAddIn.csproj.CoreCompileInputs.cache
+C:\Users\fimpe\Documents\Visual Studio 2017\Projects\FloorPlanAddIn\FloorPlanAddIn\obj\Debug\FloorPlanAddIn.dll
+C:\Users\fimpe\Documents\Visual Studio 2017\Projects\FloorPlanAddIn\FloorPlanAddIn\obj\Debug\FloorPlanAddIn.pdb
