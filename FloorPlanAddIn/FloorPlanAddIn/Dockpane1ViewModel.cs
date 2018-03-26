@@ -613,16 +613,18 @@ namespace FloorPlanAddIn
         private ICommand _cmdCreateMapsLiveData;
         public ICommand CmdCreateMapsLiveData => _cmdCreateMapsLiveData ?? (_cmdCreateMapsLiveData = new RelayCommand(async () =>
         {
+            Debug.WriteLine("CmdCreateMapsLiveData");
+
             //await QueuedTask.Run(async () =>
             //{
-                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\UMN_BLDG_ROOM.gdb"))))
+            using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\UMN_BLDG_ROOM.gdb"))))
                 {
 
-                    //for each site-building-floor combo floor open a new map and add the layers
-                    foreach (var item in uniqueSiteBuildingFloors)
+                //for each site-building-floor combo floor open a new map and add the layers
+                foreach (var item in uniqueSiteBuildingFloors)
                     {
                         //create new layout
-                        Layout layout = await QueuedTask.Run<Layout>(async () =>
+                        Layout layout = await QueuedTask.Run( () =>
                         {
                             //*** CREATE A NEW LAYOUT ***
 
@@ -647,13 +649,35 @@ namespace FloorPlanAddIn
                             Map map = MapFactory.Instance.CreateMap("FL" + item, MapType.Map, MapViewingMode.Map, Basemap.None);
 
                             //Build map frame geometry
-                            Coordinate2D ll = new Coordinate2D(4, 0.5);
-                            Coordinate2D ur = new Coordinate2D(13, 6.5);
+                            Coordinate2D ll = new Coordinate2D(6.0, 0.5);
+                            Coordinate2D ur = new Coordinate2D(16.5, 10.5);
                             Envelope env = EnvelopeBuilder.CreateEnvelope(ll, ur);
+                            Debug.WriteLine("env");
 
                             //Create map frame and add to layout
                             MapFrame mfElm = LayoutElementFactory.Instance.CreateMapFrame(layout, env, map);
                             mfElm.SetName("FL" + item);
+
+                                    //var title = @"<dyn type = ""page"" property = ""name"" />";
+                                    var title = item;
+                                    Coordinate2D llTitle = new Coordinate2D(1, 9.5);
+                                    //Note: call within QueuedTask.Run()
+                                    var titleGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llTitle, null) as ArcGIS.Desktop.Layouts.TextElement;
+                                    titleGraphics.SetName("MapTitle");
+                                    titleGraphics.SetTextProperties(new TextProperties(title, "Arial", 36, "Bold"));
+
+                                    string date = System.DateTime.Today.ToString("dd/MM/yy");
+                            Coordinate2D llDate = new Coordinate2D(1, 8);
+                            var dateGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llDate, null) as ArcGIS.Desktop.Layouts.TextElement;
+                            dateGraphics.SetName("MapDate");
+                            dateGraphics.SetTextProperties(new TextProperties(date, "Arial", 12, "Bold"));
+
+                            string user = Environment.UserName;
+                            Coordinate2D llUser = new Coordinate2D(1, 7);
+                            var userGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llUser, null) as ArcGIS.Desktop.Layouts.TextElement;
+                            userGraphics.SetName("MapUser");
+                            userGraphics.SetTextProperties(new TextProperties(user, "Arial", 12, "Bold"));
+
 
                             return layout;
                         });
@@ -665,6 +689,7 @@ namespace FloorPlanAddIn
                     FeatureLayer details = await QueuedTask.Run<FeatureLayer>(() => { return (FeatureLayer)LayerFactory.Instance.CreateLayer(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\floorplandata.gdb\\" + "FL" + item + "_DETAILS"), map2); });
                     Legend legend =  await QueuedTask.Run(() =>{Coordinate2D leg_ll = new Coordinate2D(1, 1); Coordinate2D leg_ur = new Coordinate2D(7.5, 3); Envelope leg_env = EnvelopeBuilder.CreateEnvelope(leg_ll, leg_ur); MapFrame mf = layout.FindElement("FL" + item) as MapFrame; Legend legendElm = LayoutElementFactory.Instance.CreateLegend(layout, leg_env, mf); legendElm.SetName("New Legend"); return legendElm;});
 
+
                     var layoutPane = await ProApp.Panes.CreateLayoutPaneAsync(layout);
                     var sel = layoutPane.LayoutView.GetSelectedElements();
                     if (sel.Count > 0)
@@ -675,8 +700,6 @@ namespace FloorPlanAddIn
             }
 
             }));
-
-
 
 
         /// <summary>

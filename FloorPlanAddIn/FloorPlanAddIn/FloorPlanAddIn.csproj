@@ -88,7 +88,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <AddInContent Include="Config.daml" />
+    <AddInContent Include="Config.daml">
+      <SubType>Designer</SubType>
+    </AddInContent>
     <AddInContent Include="Images\AddInDesktop16.png" />
     <AddInContent Include="Images\AddInDesktop32.png" />
     <AddInContent Include="DarkImages\AddInDesktop16.png" />
@@ -99,11 +101,19 @@
       <DependentUpon>Dockpane1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dockpane1ViewModel.cs" />
+    <Compile Include="Dockpane2.xaml.cs">
+      <DependentUpon>Dockpane2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dockpane2ViewModel.cs" />
     <Compile Include="Module1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Dockpane1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dockpane2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
