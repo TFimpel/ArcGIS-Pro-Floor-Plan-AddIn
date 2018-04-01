@@ -53,6 +53,8 @@ namespace FloorPlanAddIn
             };
         }));
 
+
+
         public async Task<bool> ZoomToVisibleLayersAsync(MapView activeMapView)
         {
             //Get the active map view.
@@ -80,7 +82,7 @@ namespace FloorPlanAddIn
         /// <summary>
         /// Text shown near the top of the DockPane.
         /// </summary>
-        private string _heading = "My DockPane";
+        private string _heading = "Style Floor Pans";
         public string Heading
         {
             get { return _heading; }

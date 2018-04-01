@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using ArcGIS.Core.CIM;
@@ -608,7 +609,10 @@ namespace FloorPlanAddIn
                 }
 
             });
-        },true));
+
+            MessageBox.Show("Using your currently selected filter options, the query will return " + uniqueSiteBuildingFloors.Count().ToString() + " unique floors. The Create Layout button will create a page layout for each floor." + Environment.NewLine + Environment.NewLine + "Click OK to close this dialog. Then either modify your filter selections and re-validate the query or proceed by clicking the Create Layout button.", "Query Validation Results");
+
+        }, true));
 
         private ICommand _cmdCreateMapsLiveData;
         public ICommand CmdCreateMapsLiveData => _cmdCreateMapsLiveData ?? (_cmdCreateMapsLiveData = new RelayCommand(async () =>
@@ -649,31 +653,59 @@ namespace FloorPlanAddIn
                             Map map = MapFactory.Instance.CreateMap("FL" + item, MapType.Map, MapViewingMode.Map, Basemap.None);
 
                             //Build map frame geometry
-                            Coordinate2D ll = new Coordinate2D(6.0, 0.5);
+                            Coordinate2D ll = new Coordinate2D(4.0, 0.5);
                             Coordinate2D ur = new Coordinate2D(16.5, 10.5);
                             Envelope env = EnvelopeBuilder.CreateEnvelope(ll, ur);
                             Debug.WriteLine("env");
 
                             //Create map frame and add to layout
                             MapFrame mfElm = LayoutElementFactory.Instance.CreateMapFrame(layout, env, map);
+                            Debug.WriteLine("0");
+
                             mfElm.SetName("FL" + item);
 
-                                    //var title = @"<dyn type = ""page"" property = ""name"" />";
-                                    var title = item;
-                                    Coordinate2D llTitle = new Coordinate2D(1, 9.5);
-                                    //Note: call within QueuedTask.Run()
-                                    var titleGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llTitle, null) as ArcGIS.Desktop.Layouts.TextElement;
-                                    titleGraphics.SetName("MapTitle");
-                                    titleGraphics.SetTextProperties(new TextProperties(title, "Arial", 36, "Bold"));
+                            //var title = @"<dyn type = ""page"" property = ""name"" />";
+                            var title = item;
+                            //Debug.WriteLine(item.Length);
+                            //var title = "Campus: " + item.Substring(0, 2) + "& vbnewline &" + "Building: <br>" + item.Substring(3, 4) + "& vbnewline &" + "Floor: "; //+ item.Substring(5, item.Length-1);
+                            //Coordinate2D llTitle = new Coordinate2D(1, 9.5);
+                            //Note: call within QueuedTask.Run()
+                            //var titleGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llTitle, null) as ArcGIS.Desktop.Layouts.TextElement;
+                            //titleGraphics.SetName("MapTitle");
+                            //titleGraphics.SetTextProperties(new TextProperties(title, "Arial", 36, "Bold"));
+                            Debug.WriteLine("1");
+                            Coordinate2D llcampus = new Coordinate2D(1, 10.03);
+                            var campusGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llcampus, null) as ArcGIS.Desktop.Layouts.TextElement;
+                            campusGraphics.SetName("MapCampus");
+                            string c = "Campus: " + title.Substring(0, 2);
+                            campusGraphics.SetTextProperties(new TextProperties(c, "Arial", 30, "Bold"));
+                            Debug.WriteLine("2");
 
-                                    string date = System.DateTime.Today.ToString("dd/MM/yy");
-                            Coordinate2D llDate = new Coordinate2D(1, 8);
+                            Coordinate2D llbuilding = new Coordinate2D(1, 9.47);
+                            var buildingGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llbuilding, null) as ArcGIS.Desktop.Layouts.TextElement;
+                            buildingGraphics.SetName("MapBuilding");
+                            string b = "Building: " + title.Substring(2, 3);
+                            buildingGraphics.SetTextProperties(new TextProperties(b, "Arial", 30, "Bold"));
+                            Debug.WriteLine("3");
+
+                            Coordinate2D llfloor = new Coordinate2D(1, 8.9);
+                            var floorGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llfloor, null) as ArcGIS.Desktop.Layouts.TextElement;
+                            //int l = (item.Length) - 4;
+                            string fl = title.Substring(5); //title.Remove(4, title.Length - (4+1) );
+                            floorGraphics.SetName("MapFloor");
+                            string f = "Floor: "+ fl;
+                            floorGraphics.SetTextProperties(new TextProperties(f, "Arial", 30, "Bold"));
+                            Debug.WriteLine("4");
+
+
+                            string date = "Created date: " + System.DateTime.Today.ToString("dd/MM/yy");
+                            Coordinate2D llDate = new Coordinate2D(1, 8.52);
                             var dateGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llDate, null) as ArcGIS.Desktop.Layouts.TextElement;
                             dateGraphics.SetName("MapDate");
                             dateGraphics.SetTextProperties(new TextProperties(date, "Arial", 12, "Bold"));
 
-                            string user = Environment.UserName;
-                            Coordinate2D llUser = new Coordinate2D(1, 7);
+                            string user = "Created by: " + Environment.UserName;
+                            Coordinate2D llUser = new Coordinate2D(1, 8.22);
                             var userGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llUser, null) as ArcGIS.Desktop.Layouts.TextElement;
                             userGraphics.SetName("MapUser");
                             userGraphics.SetTextProperties(new TextProperties(user, "Arial", 12, "Bold"));
@@ -687,7 +719,8 @@ namespace FloorPlanAddIn
                     Map map2 = await QueuedTask.Run<Map>(() => { return mapPrjItem.GetMap(); });
                     FeatureLayer rooms = await QueuedTask.Run<FeatureLayer>(() => { return (FeatureLayer)LayerFactory.Instance.CreateLayer(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\floorplandata.gdb\\" + "FL" + item + "_ROOMS"), map2); });
                     FeatureLayer details = await QueuedTask.Run<FeatureLayer>(() => { return (FeatureLayer)LayerFactory.Instance.CreateLayer(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\floorplandata.gdb\\" + "FL" + item + "_DETAILS"), map2); });
-                    Legend legend =  await QueuedTask.Run(() =>{Coordinate2D leg_ll = new Coordinate2D(1, 1); Coordinate2D leg_ur = new Coordinate2D(7.5, 3); Envelope leg_env = EnvelopeBuilder.CreateEnvelope(leg_ll, leg_ur); MapFrame mf = layout.FindElement("FL" + item) as MapFrame; Legend legendElm = LayoutElementFactory.Instance.CreateLegend(layout, leg_env, mf); legendElm.SetName("New Legend"); return legendElm;});
+                    //Legend legend =  await QueuedTask.Run(() =>{Coordinate2D leg_ll = new Coordinate2D(1, 1); Coordinate2D leg_ur = new Coordinate2D(3, 7); Envelope leg_env = EnvelopeBuilder.CreateEnvelope(leg_ll, leg_ur); MapFrame mf = layout.FindElement("FL" + item) as MapFrame; Legend legendElm = LayoutElementFactory.Instance.CreateLegend(layout, leg_env, mf); legendElm.SetName("New Legend"); return legendElm;});
+                    Legend legend = await QueuedTask.Run(() => { Coordinate2D leg_ll = new Coordinate2D(1, 0.5); Coordinate2D leg_ur = new Coordinate2D(4, 8); Envelope leg_env = EnvelopeBuilder.CreateEnvelope(leg_ll, leg_ur); MapFrame mf = layout.FindElement("FL" + item) as MapFrame; Legend legendElm = LayoutElementFactory.Instance.CreateLegend(layout, leg_env, mf); legendElm.SetName("New Legend"); return legendElm; });
 
 
                     var layoutPane = await ProApp.Panes.CreateLayoutPaneAsync(layout);

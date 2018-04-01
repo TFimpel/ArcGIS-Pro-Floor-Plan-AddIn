@@ -4,17 +4,17 @@
 library
 C#
 .cs
-C:\Users\fimpe\Documents\Visual Studio 2017\Projects\FloorPlanAddIn\FloorPlanAddIn\obj\Debug\
+C:\Users\fimpe\Documents\Visual Studio 2017\Projects\FloorPlanAddInMarch2018\FloorPlanAddIn\obj\Debug\
 FloorPlanAddIn
 none
 false
 DEBUG;TRACE
 
-1-60257377
+2-120514915
 
-897825355
+10-1906717343
 21-279893455
-Dockpane1.xaml;
+Dockpane1.xaml;Dockpane2.xaml;
 
-False
+True
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArcGIS.Desktop.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,20 @@ namespace FloorPlanAddIn
 
 
 
-        }      
+        }
+
+        
+                    public void btnOpenStyler(object sender, EventArgs e)
+        {
+            // in order to find a dockpane you need to know it's DAML id
+            var pane = FrameworkApplication.DockPaneManager.Find("FloorPlanAddIn_Dockpane2");
+
+            // determine visibility
+            bool visible = pane.IsVisible;
+
+            // activate it
+            pane.Activate();
+
+        }
     }
 }

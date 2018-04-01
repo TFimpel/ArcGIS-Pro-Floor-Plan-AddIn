@@ -29,18 +29,18 @@
       </groups>
       <controls>
         <!-- add your controls here -->
-        <button id="FloorPlanAddIn_Dockpane1_ShowButton" caption="Query Floor Plans" className="Dockpane1_ShowButton" loadOnClick="true" smallImage="Images\GenericButtonPurple16.png" largeImage="Images\GenericButtonPurple32.png">
+        <button id="FloorPlanAddIn_Dockpane1_ShowButton" caption="Query Floor Plans and Create Layouts" className="Dockpane1_ShowButton" loadOnClick="true" smallImage="Images\GenericButtonPurple16.png" largeImage="Images\GenericButtonPurple32.png">
           <tooltip heading="Query FLoor Plans">Show Dockpane<disabledText /></tooltip>
         </button>
-        <button id="FloorPlanAddIn_Dockpane2_ShowButton" caption="Style Floor Plans" className="Dockpane2_ShowButton" loadOnClick="true" smallImage="Images\GenericButtonPurple16.png" largeImage="Images\GenericButtonPurple32.png">
+        <button id="FloorPlanAddIn_Dockpane2_ShowButton" caption="Style Layouts and Export to PDF" className="Dockpane2_ShowButton" loadOnClick="true" smallImage="Images\GenericButtonPurple16.png" largeImage="Images\GenericButtonPurple32.png">
           <tooltip heading="Style Floor Plans">Show Dockpane<disabledText /></tooltip>
         </button>
       </controls>
       <dockPanes>
-        <dockPane id="FloorPlanAddIn_Dockpane1" caption="Query Floor Plans" className="Dockpane1ViewModel" dock="group" dockWith="esri_core_contentsDockPane">
+        <dockPane id="FloorPlanAddIn_Dockpane1" caption="Query Floor Plans and Create Layouts" className="Dockpane1ViewModel" dock="group" dockWith="esri_core_contentsDockPane">
           <content className="Dockpane1View" />
         </dockPane>
-        <dockPane id="FloorPlanAddIn_Dockpane2" caption="Style Floor Plans" className="Dockpane2ViewModel" dock="group" dockWith="esri_core_contentsDockPane">
+        <dockPane id="FloorPlanAddIn_Dockpane2" caption="Style Layouts and Export to PDF" className="Dockpane2ViewModel" dock="group" dockWith="esri_core_contentsDockPane">
           <content className="Dockpane2View" />
         </dockPane>
       </dockPanes>

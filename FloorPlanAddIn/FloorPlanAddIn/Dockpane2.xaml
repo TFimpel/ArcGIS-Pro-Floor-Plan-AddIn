@@ -25,56 +25,68 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
 
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <DockPanel Grid.Row="0" LastChildFill="true" KeyboardNavigation.TabNavigation="Local" Height="30">
-            <TextBlock Grid.Column="1" Text="{Binding Heading}" Style="{DynamicResource Esri_TextBlockDockPaneHeader}">
-                <TextBlock.ToolTip>
-                    <WrapPanel Orientation="Vertical" MaxWidth="300">
-                        <TextBlock Text="{Binding Heading}" TextWrapping="Wrap"/>
-                    </WrapPanel>
-                </TextBlock.ToolTip>
-        </TextBlock>
-        </DockPanel>
+        <TextBlock Grid.Row="0"  Grid.Column="0" Text="(1) Set Extent, Rotate Selected Map Frame" Style="{DynamicResource Esri_TextBlockDockPaneHeading	}" VerticalAlignment="Bottom"  Margin="5,5,0,0" Grid.ColumnSpan="2"></TextBlock>
+        <StackPanel  Grid.Row="1" Margin="5,0,0,0" Orientation="Horizontal" >
+            <Button  Content="Set Extent" Command="{Binding CmdZoomAndCenterActiveLayout}"  Style="{DynamicResource Esri_Button}"  Width="100"  />
+            <Button  Content="Rotate 45°" Click="rotateMap"  Style="{DynamicResource Esri_Button}"  Width="100"  />
+        </StackPanel>
+        <TextBlock Margin="5,0,0,0" HorizontalAlignment="Left" Width="280" TextWrapping="Wrap" Grid.Row="2"  Grid.ColumnSpan="2" Grid.Column="0" Text="Click on the page layout's map frame, center the extent on the floor plan, then rotate it as needed to fit the page." FontSize="11" Style="{DynamicResource Esri_TextBlockRegular}" TextAlignment="Left"></TextBlock>
 
-        <Button Grid.Row="1" MaxHeight="50" Grid.Column="0"  Content="Zoom and Center" Command="{Binding CmdZoomAndCenterActiveLayout}"  Style="{DynamicResource Esri_Button}" Grid.ColumnSpan="2" />
 
-        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" Margin="5,5,5,5" Background="{DynamicResource Esri_ControlBackgroundBrush}" HorizontalAlignment="Left">
+
+        <TextBlock Grid.Row="3"  Grid.Column="0" Text="(2) Label Rooms" Style="{DynamicResource Esri_TextBlockDockPaneHeading	}" VerticalAlignment="Bottom"  Margin="5,5,0,0" Grid.ColumnSpan="2"></TextBlock>
+        <StackPanel Grid.RowSpan="4"  Grid.Row="4" Orientation="Vertical" Margin="5,5,5,5"  HorizontalAlignment="Left">
             <RadioButton Content="None" Click="btnChangeLayerFilter" Tag="None" IsChecked="True"/>
             <RadioButton Content="Room number" Click="btnChangeLayerFilter" Tag="$feature.RMNUMB" IsChecked="False"/>
             <RadioButton Content="Room area" Click="btnChangeLayerFilter" Tag="$feature.RMAREA" IsChecked="False"/>
             <RadioButton Content="Room number and area" Click="btnChangeLayerFilter" Tag="$feature.RMNUMB +  TextFormatting.NewLine  + $feature.RMAREA" IsChecked="False"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="3" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical"  Background="{DynamicResource Esri_ControlBackgroundBrush}" HorizontalAlignment="Left">
-            <RadioButton Content="None" Click="btnChangeRoomSymbology" Tag="None" IsChecked="True"/>
-            <RadioButton Content="Beige" Click="btnChangeRoomSymbology" Tag="Beige" IsChecked="False"/>
+        <TextBlock Grid.Row="6"  Grid.Column="0" Text="(3) Color Code Rooms" Style="{DynamicResource Esri_TextBlockDockPaneHeading	}" VerticalAlignment="Bottom"  Margin="5,5,0,0" Grid.ColumnSpan="2"></TextBlock>
+        <StackPanel Grid.Row="7" Margin="5,5,5,5" Grid.RowSpan="3" Orientation="Vertical" HorizontalAlignment="Left">
+            <RadioButton Content="All Transparent" Click="btnChangeRoomSymbology" Tag="None" IsChecked="False"/>
+            <RadioButton Content="All Beige" Click="btnChangeRoomSymbology" Tag="Beige" IsChecked="False"/>
             <RadioButton Content="Color Code based on Use Group" Click="btnChangeRoomSymbology" Tag="Multicolor1" IsChecked="False"/>
-            <RadioButton Content="Color Code based on Use Group2" Click="btnChangeRoomSymbology" Tag="Multicolor1" IsChecked="False"/>
-            <RadioButton Content="Color Code based on Use Group3" Click="btnChangeRoomSymbology" Tag="Multicolor1" IsChecked="False"/>
-            <RadioButton Content="Color Code based on Use Group4" Click="btnChangeRoomSymbology" Tag="Multicolor1" IsChecked="False"/>
+            <RadioButton Content="Color Code based Function Code" Click="btnChangeRoomSymbology" Tag="Multicolor1" IsChecked="False"/>
+            <RadioButton Content="Color Code based on Group/Dept. ID" Click="btnChangeRoomSymbology" Tag="Multicolor1" IsChecked="False"/>
         </StackPanel>
 
-
-        <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical"  Background="{DynamicResource Esri_ControlBackgroundBrush}" HorizontalAlignment="Left">
-            <RadioButton Content="None" Click="btnChangeLineSymbology" Tag="None" IsChecked="True"/>
-            <RadioButton Content="Gray" Click="btnChangeLineSymbology" Tag="Gray" IsChecked="False"/>
-            <RadioButton Content="Mutlicolor 1" Click="btnChangeLineSymbology" Tag="Multicolor" IsChecked="False"/>
+        <TextBlock Grid.Row="10"  Grid.Column="0" Text="(4) Change Line Color" Style="{DynamicResource Esri_TextBlockDockPaneHeading	}" VerticalAlignment="Bottom"  Margin="5,5,0,0" Grid.ColumnSpan="2"></TextBlock>
+        <StackPanel  Margin="5,5,5,5" Grid.RowSpan="1" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal"  HorizontalAlignment="Left">
+            <RadioButton Margin="5,0,10,0" Content="None" Click="btnChangeLineSymbology" Tag="None" IsChecked="False"/>
+            <RadioButton Margin="5,0,10,0" Content="Gray" Click="btnChangeLineSymbology" Tag="Gray" IsChecked="False"/>
+            <RadioButton Margin="5,0,10,0" Content="Mutlicolor 1" Click="btnChangeLineSymbology" Tag="Multicolor" IsChecked="False"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" Margin="5,5,5,5" Background="{DynamicResource Esri_ControlBackgroundBrush}" HorizontalAlignment="Left">
-            <RepeatButton Content="Decrease Reference Scale" Click="btnChangeRefscaleDecrease" Tag="down" IsEnabled="True"></RepeatButton>
-            <RepeatButton Content="Increase Reference Scale" Click="btnChangeRefscaleIncrease" Tag="up" IsEnabled="True" ></RepeatButton>
-            <RepeatButton Content="Reset Reference Scale" Click="btnChangeRefscaleReset" Tag="reset" IsEnabled="True" ></RepeatButton>
+        <TextBlock Grid.Row="12"  Grid.Column="0" Text="(5) Adjust Reference Scale" Style="{DynamicResource Esri_TextBlockDockPaneHeading	}" VerticalAlignment="Bottom"  Margin="5,5,0,0" Grid.ColumnSpan="2"></TextBlock>
+        <StackPanel  Margin="5,0,0,0" Grid.Row="13" Orientation="Horizontal">
+            <RepeatButton  Content="Decrease" Click="btnChangeRefscaleDecrease" Tag="down" IsEnabled="True" Width="70"  Height="29"  VerticalAlignment="Center" Background="#FFFFFF" BorderBrush="Black" BorderThickness="0.8"></RepeatButton>
+            <RepeatButton Content="Reset" Click="btnChangeRefscaleReset" Tag="reset" IsEnabled="True"  Width="50"  Height="29"  VerticalAlignment="Center" Background="#FFFFFF" BorderBrush="Black" BorderThickness="0.8"></RepeatButton>
+            <RepeatButton Content="Increase" Click="btnChangeRefscaleIncrease" Tag="up" IsEnabled="True" Width="70"  Height="29"  Background="#FFFFFF" BorderBrush="Black" BorderThickness="0.8"></RepeatButton>
         </StackPanel>
-        <Button Grid.Row="7" MaxHeight="50" Grid.Column="0"  Content="btnExportLayout" Click="btnExportLayout"  Style="{DynamicResource Esri_Button}" Grid.ColumnSpan="2" />
+        <TextBlock Margin="5,0,0,0" HorizontalAlignment="Left" Width="280" Grid.RowSpan="1" TextWrapping="Wrap" Grid.Row="14"  Grid.ColumnSpan="2" Grid.Column="0" Text="Decrease: lines appear thinner and labels appear smaller. Increase: lines appear wider and labels appear larger." FontSize="11" Style="{DynamicResource Esri_TextBlockRegular}" TextAlignment="Left"></TextBlock>
+
+
+        <TextBlock Grid.Row="15"  Grid.Column="0" Text="(6) Export to .PDF File" Style="{DynamicResource Esri_TextBlockDockPaneHeading	}" VerticalAlignment="Bottom"  Margin="5,5,0,0" Grid.ColumnSpan="2"></TextBlock>
+        <Button Margin="5,5,5,0" HorizontalAlignment="Left" Width="100" Grid.Row="16" Grid.Column="0"  Content="Export to .pdf" Click="btnExportLayout"  Style="{DynamicResource Esri_Button}" Grid.ColumnSpan="2" />
+        <TextBlock Margin="5,5,0,5" HorizontalAlignment="Left" Width="280" TextWrapping="Wrap" Grid.Row="17"  Grid.ColumnSpan="2" Grid.Column="0" Text="File will be saved in the current ArcGIS Pro Project folder." FontSize="11" Style="{DynamicResource Esri_TextBlockRegular}" TextAlignment="Left"></TextBlock>
 
     </Grid>
 </UserControl>

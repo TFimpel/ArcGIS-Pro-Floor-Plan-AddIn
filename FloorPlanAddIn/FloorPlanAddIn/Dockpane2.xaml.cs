@@ -35,10 +35,35 @@ namespace FloorPlanAddIn
         }
 
 
+        //ptTxtElm.SetRotation(45);
+        //MapFrame
+        public async void rotateMap(object sender, EventArgs e)
+        {
+            var currName = MapView.Active.Map.Name;
+
+            LayoutProjectItem layoutItem = Project.Current.GetItems<LayoutProjectItem>().FirstOrDefault(item => item.Name.Equals(currName));
+
+            if (layoutItem != null)
+            {
+                await QueuedTask.Run(() =>
+                {
+                    Layout layout = layoutItem.GetLayout();
+                    if (layout == null)
+                        return;
+                    MapFrame mfElm = layout.Elements.FirstOrDefault(item => item.Name.Equals(currName)) as MapFrame;
+                    var currRot = mfElm.GetRotation();
+                    Camera currCam = mfElm.Camera;
+                    double currHeading = currCam.Heading;
+                    currCam.Heading = currHeading + 45;
+                    MapView.Active.ZoomToAsync(currCam, TimeSpan.Zero);
 
 
+                });
+            }
+        }
 
-        public async void btnExportLayout(object sender, EventArgs e)
+
+                    public async void btnExportLayout(object sender, EventArgs e)
         {
             var currName = MapView.Active.Map.Name;
             LayoutProjectItem layoutItem = Project.Current.GetItems<LayoutProjectItem>().FirstOrDefault(item => item.Name.Equals(currName));
@@ -51,10 +76,13 @@ namespace FloorPlanAddIn
                     if (layout == null)
                         return;
 
+                    var outputFolder = Project.Current.HomeFolderPath;
+
+
                     PDFFormat PDF = new PDFFormat()
                     {
                         Resolution = 300,
-                        OutputFileName = @"C:\Users\fimpe\OneDrive\MGIS\GEOG 8990 Spring 2018\" + currName +".pdf"
+                        OutputFileName = outputFolder + "\\" + currName +".pdf"
                     };
 
                     if (PDF.ValidateOutputFilePath())
@@ -67,7 +95,7 @@ namespace FloorPlanAddIn
                         else
                         {
                             layout.Export(PDF);
-                            MessageBox.Show("The layout was exported to a pdf.", "Well done!", MessageBoxButton.OK);
+                            MessageBox.Show("The layout was exported to a .pdf.", "The layout was exported to a pdf.", MessageBoxButton.OK);
                         }
 
                     }
@@ -136,7 +164,7 @@ namespace FloorPlanAddIn
                     if (currentRefscale < 0)
                     {
                     Debug.WriteLine("refscale is already negative. don't lower further. that's just confusing.");
-                    MessageBox.Show("Reference Scale cannot be lowered further. You need to make the labels larger or the lines wider in a different way (symbology/labels settigns).");
+                    MessageBox.Show("Reference Scale cannot be decreased further. You need to change the appearance of the lines and labels in a different way, for example by modifying the layer symbology/labels settigns.");
                     }
                     else
                     {
