@@ -248,7 +248,7 @@ namespace FloorPlanAddIn
             BindingOperations.EnableCollectionSynchronization(Sites, _lockListOfSites); //needed to avoid multithreading related error because a different thread is used to modify the collection than was used to create the collection.
             await QueuedTask.Run(() =>
             {
-                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\UMN_BLDG_ROOM.gdb"))))
+                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\ArcGIS Pro Floor Plan Tools Add-In\\UMN_BLDG_ROOM.gdb"))))
 
                 {
                     QueryDef queryDef = new QueryDef
@@ -289,7 +289,7 @@ namespace FloorPlanAddIn
             BindingOperations.EnableCollectionSynchronization(Sites, _lockListOfSites); //needed to avoid multithreading related error because a different thread is used to modify the collection than was used to create the collection.
             await QueuedTask.Run(() =>
             {
-                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\UMN_BLDG_ROOM.gdb"))))
+                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\ArcGIS Pro Floor Plan Tools Add-In\\UMN_BLDG_ROOM.gdb"))))
 
                 {
                     QueryDef queryDef = new QueryDef
@@ -332,7 +332,7 @@ namespace FloorPlanAddIn
             BindingOperations.EnableCollectionSynchronization(Buildings, _lockListOfBuildings); //needed to avoid multithreading related error because a different thread is used to modify the collection than was used to create the collection.
             await QueuedTask.Run(() =>
             {
-                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\UMN_BLDG_ROOM.gdb"))))
+                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\ArcGIS Pro Floor Plan Tools Add-In\\UMN_BLDG_ROOM.gdb"))))
                 {
                     Debug.WriteLine(SelectedSitesWhereClause);
 
@@ -373,7 +373,7 @@ namespace FloorPlanAddIn
             BindingOperations.EnableCollectionSynchronization(Buildings, _lockListOfBuildings); //needed to avoid multithreading related error because a different thread is used to modify the collection than was used to create the collection.
             await QueuedTask.Run(() =>
             {
-                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\UMN_BLDG_ROOM.gdb"))))
+                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\ArcGIS Pro Floor Plan Tools Add-In\\UMN_BLDG_ROOM.gdb"))))
                 {
                     Debug.WriteLine(SelectedSitesWhereClause);
 
@@ -416,7 +416,7 @@ namespace FloorPlanAddIn
             BindingOperations.EnableCollectionSynchronization(Floors, _lockListOfFloors); //needed to avoid multithreading related error because a different thread is used to modify the collection than was used to create the collection.
             await QueuedTask.Run(() =>
             {
-                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\UMN_BLDG_ROOM.gdb"))))
+                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\ArcGIS Pro Floor Plan Tools Add-In\\UMN_BLDG_ROOM.gdb"))))
                 {
                     QueryDef queryDef = new QueryDef
                     {
@@ -455,7 +455,7 @@ namespace FloorPlanAddIn
             BindingOperations.EnableCollectionSynchronization(Floors, _lockListOfFloors); //needed to avoid multithreading related error because a different thread is used to modify the collection than was used to create the collection.
             await QueuedTask.Run(() =>
             {
-                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\UMN_BLDG_ROOM.gdb"))))
+                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\ArcGIS Pro Floor Plan Tools Add-In\\UMN_BLDG_ROOM.gdb"))))
                 {
                     QueryDef queryDef = new QueryDef
                     {
@@ -495,7 +495,7 @@ namespace FloorPlanAddIn
             BindingOperations.EnableCollectionSynchronization(GroupIDs, _lockListOfGroupIDs); //needed to avoid multithreading related error because a different thread is used to modify the collection than was used to create the collection.
             await QueuedTask.Run(() =>
             {
-                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\UMN_BLDG_ROOM.gdb"))))
+                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\ArcGIS Pro Floor Plan Tools Add-In\\UMN_BLDG_ROOM.gdb"))))
                 {
                     QueryDef queryDef = new QueryDef
                     {
@@ -534,7 +534,7 @@ namespace FloorPlanAddIn
             BindingOperations.EnableCollectionSynchronization(GroupIDs, _lockListOfGroupIDs); //needed to avoid multithreading related error because a different thread is used to modify the collection than was used to create the collection.
             await QueuedTask.Run(() =>
             {
-                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\UMN_BLDG_ROOM.gdb"))))
+                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\ArcGIS Pro Floor Plan Tools Add-In\\UMN_BLDG_ROOM.gdb"))))
                 {
                     QueryDef queryDef = new QueryDef
                     {
@@ -574,7 +574,7 @@ namespace FloorPlanAddIn
         {
             await QueuedTask.Run(() =>
             {
-                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\UMN_BLDG_ROOM.gdb"))))
+                using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\ArcGIS Pro Floor Plan Tools Add-In\\UMN_BLDG_ROOM.gdb"))))
                 {
 
                     string combinedWhereClause = SelectedSitesWhereClause + " AND " + SelectedBuildingsWhereClause + " AND " + SelectedFloorsWhereClause + " AND " + SelectedGroupIDsWhereClause;
@@ -621,31 +621,32 @@ namespace FloorPlanAddIn
 
             //await QueuedTask.Run(async () =>
             //{
-            using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\UMN_BLDG_ROOM.gdb"))))
-                {
+            //using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\UMN_BLDG_ROOM.gdb"))))
+            using (Geodatabase geodatabase = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri("C:\\ArcGIS Pro Floor Plan Tools Add-In\\UMN_BLDG_ROOM.gdb"))))
+            {
 
                 //for each site-building-floor combo floor open a new map and add the layers
                 foreach (var item in uniqueSiteBuildingFloors)
-                    {
-                        //create new layout
-                        Layout layout = await QueuedTask.Run( () =>
-                        {
+                {
+                    //create new layout
+                    Layout layout = await QueuedTask.Run(() =>
+                   {
                             //*** CREATE A NEW LAYOUT ***
 
                             //Set up a page
                             CIMPage newPage = new CIMPage();
                             //required properties
                             newPage.Width = 17;
-                            newPage.Height = 11;
-                            newPage.Units = LinearUnit.Inches;
-                          
+                       newPage.Height = 11;
+                       newPage.Units = LinearUnit.Inches;
+
 
                             //optional rulers
                             newPage.ShowRulers = true;
-                            newPage.SmallestRulerDivision = 0.5;
+                       newPage.SmallestRulerDivision = 0.5;
 
-                            layout = LayoutFactory.Instance.CreateLayout(newPage);
-                            layout.SetName("FL" + item);
+                       layout = LayoutFactory.Instance.CreateLayout(newPage);
+                       layout.SetName("FL" + item);
 
                             //*** INSERT MAP FRAME ***
 
@@ -654,15 +655,15 @@ namespace FloorPlanAddIn
 
                             //Build map frame geometry
                             Coordinate2D ll = new Coordinate2D(4.0, 0.5);
-                            Coordinate2D ur = new Coordinate2D(16.5, 10.5);
-                            Envelope env = EnvelopeBuilder.CreateEnvelope(ll, ur);
-                            Debug.WriteLine("env");
+                       Coordinate2D ur = new Coordinate2D(16.5, 10.5);
+                       Envelope env = EnvelopeBuilder.CreateEnvelope(ll, ur);
+                       Debug.WriteLine("env");
 
                             //Create map frame and add to layout
                             MapFrame mfElm = LayoutElementFactory.Instance.CreateMapFrame(layout, env, map);
-                            Debug.WriteLine("0");
+                       Debug.WriteLine("0");
 
-                            mfElm.SetName("FL" + item);
+                       mfElm.SetName("FL" + item);
 
                             //var title = @"<dyn type = ""page"" property = ""name"" />";
                             var title = item;
@@ -674,51 +675,51 @@ namespace FloorPlanAddIn
                             //titleGraphics.SetName("MapTitle");
                             //titleGraphics.SetTextProperties(new TextProperties(title, "Arial", 36, "Bold"));
                             Debug.WriteLine("1");
-                            Coordinate2D llcampus = new Coordinate2D(1, 10.03);
-                            var campusGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llcampus, null) as ArcGIS.Desktop.Layouts.TextElement;
-                            campusGraphics.SetName("MapCampus");
-                            string c = "Campus: " + title.Substring(0, 2);
-                            campusGraphics.SetTextProperties(new TextProperties(c, "Arial", 30, "Bold"));
-                            Debug.WriteLine("2");
+                       Coordinate2D llcampus = new Coordinate2D(1, 10.03);
+                       var campusGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llcampus, null) as ArcGIS.Desktop.Layouts.TextElement;
+                       campusGraphics.SetName("MapCampus");
+                       string c = "Campus: " + title.Substring(0, 2);
+                       campusGraphics.SetTextProperties(new TextProperties(c, "Arial", 30, "Bold"));
+                       Debug.WriteLine("2");
 
-                            Coordinate2D llbuilding = new Coordinate2D(1, 9.47);
-                            var buildingGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llbuilding, null) as ArcGIS.Desktop.Layouts.TextElement;
-                            buildingGraphics.SetName("MapBuilding");
-                            string b = "Building: " + title.Substring(2, 3);
-                            buildingGraphics.SetTextProperties(new TextProperties(b, "Arial", 30, "Bold"));
-                            Debug.WriteLine("3");
+                       Coordinate2D llbuilding = new Coordinate2D(1, 9.47);
+                       var buildingGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llbuilding, null) as ArcGIS.Desktop.Layouts.TextElement;
+                       buildingGraphics.SetName("MapBuilding");
+                       string b = "Building: " + title.Substring(2, 3);
+                       buildingGraphics.SetTextProperties(new TextProperties(b, "Arial", 30, "Bold"));
+                       Debug.WriteLine("3");
 
-                            Coordinate2D llfloor = new Coordinate2D(1, 8.9);
-                            var floorGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llfloor, null) as ArcGIS.Desktop.Layouts.TextElement;
+                       Coordinate2D llfloor = new Coordinate2D(1, 8.9);
+                       var floorGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llfloor, null) as ArcGIS.Desktop.Layouts.TextElement;
                             //int l = (item.Length) - 4;
                             string fl = title.Substring(5); //title.Remove(4, title.Length - (4+1) );
                             floorGraphics.SetName("MapFloor");
-                            string f = "Floor: "+ fl;
-                            floorGraphics.SetTextProperties(new TextProperties(f, "Arial", 30, "Bold"));
-                            Debug.WriteLine("4");
+                       string f = "Floor: " + fl;
+                       floorGraphics.SetTextProperties(new TextProperties(f, "Arial", 30, "Bold"));
+                       Debug.WriteLine("4");
 
 
-                            string date = "Created date: " + System.DateTime.Today.ToString("dd/MM/yy");
-                            Coordinate2D llDate = new Coordinate2D(1, 8.52);
-                            var dateGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llDate, null) as ArcGIS.Desktop.Layouts.TextElement;
-                            dateGraphics.SetName("MapDate");
-                            dateGraphics.SetTextProperties(new TextProperties(date, "Arial", 12, "Bold"));
+                       string date = "Created date: " + System.DateTime.Today.ToString("dd/MM/yy");
+                       Coordinate2D llDate = new Coordinate2D(1, 8.52);
+                       var dateGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llDate, null) as ArcGIS.Desktop.Layouts.TextElement;
+                       dateGraphics.SetName("MapDate");
+                       dateGraphics.SetTextProperties(new TextProperties(date, "Arial", 12, "Bold"));
 
-                            string user = "Created by: " + Environment.UserName;
-                            Coordinate2D llUser = new Coordinate2D(1, 8.22);
-                            var userGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llUser, null) as ArcGIS.Desktop.Layouts.TextElement;
-                            userGraphics.SetName("MapUser");
-                            userGraphics.SetTextProperties(new TextProperties(user, "Arial", 12, "Bold"));
+                       string user = "Created by: " + Environment.UserName;
+                       Coordinate2D llUser = new Coordinate2D(1, 8.22);
+                       var userGraphics = LayoutElementFactory.Instance.CreatePointTextGraphicElement(layout, llUser, null) as ArcGIS.Desktop.Layouts.TextElement;
+                       userGraphics.SetName("MapUser");
+                       userGraphics.SetTextProperties(new TextProperties(user, "Arial", 12, "Bold"));
 
 
-                            return layout;
-                        });
+                       return layout;
+                   });
 
                     //*** OPEN LAYOUT VIEW (must be in the GUI thread) ***
                     MapProjectItem mapPrjItem = Project.Current.GetItems<MapProjectItem>().FirstOrDefault(i => i.Name.Equals("FL" + item));
                     Map map2 = await QueuedTask.Run<Map>(() => { return mapPrjItem.GetMap(); });
-                    FeatureLayer rooms = await QueuedTask.Run<FeatureLayer>(() => { return (FeatureLayer)LayerFactory.Instance.CreateLayer(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\floorplandata.gdb\\" + "FL" + item + "_ROOMS"), map2); });
-                    FeatureLayer details = await QueuedTask.Run<FeatureLayer>(() => { return (FeatureLayer)LayerFactory.Instance.CreateLayer(new Uri("C:\\Users\\fimpe\\Documents\\ArcGIS\\Projects\\MyProject58\\floorplandata.gdb\\" + "FL" + item + "_DETAILS"), map2); });
+                    FeatureLayer rooms = await QueuedTask.Run<FeatureLayer>(() => { return (FeatureLayer)LayerFactory.Instance.CreateLayer(new Uri("C:\\ArcGIS Pro Floor Plan Tools Add-In\\UMN_BLDG_ROOM.gdb\\" + "FL" + item + "_ROOMS"), map2); });
+                    FeatureLayer details = await QueuedTask.Run<FeatureLayer>(() => { return (FeatureLayer)LayerFactory.Instance.CreateLayer(new Uri("C:\\ArcGIS Pro Floor Plan Tools Add-In\\UMN_BLDG_ROOM.gdb\\" + "FL" + item + "_DETAILS"), map2); });
                     //Legend legend =  await QueuedTask.Run(() =>{Coordinate2D leg_ll = new Coordinate2D(1, 1); Coordinate2D leg_ur = new Coordinate2D(3, 7); Envelope leg_env = EnvelopeBuilder.CreateEnvelope(leg_ll, leg_ur); MapFrame mf = layout.FindElement("FL" + item) as MapFrame; Legend legendElm = LayoutElementFactory.Instance.CreateLegend(layout, leg_env, mf); legendElm.SetName("New Legend"); return legendElm;});
                     Legend legend = await QueuedTask.Run(() => { Coordinate2D leg_ll = new Coordinate2D(1, 0.5); Coordinate2D leg_ur = new Coordinate2D(4, 8); Envelope leg_env = EnvelopeBuilder.CreateEnvelope(leg_ll, leg_ur); MapFrame mf = layout.FindElement("FL" + item) as MapFrame; Legend legendElm = LayoutElementFactory.Instance.CreateLegend(layout, leg_env, mf); legendElm.SetName("New Legend"); return legendElm; });
 
